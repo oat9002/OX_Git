@@ -3,7 +3,6 @@ import java.util.Scanner;;
 public class OX {
 	
 	String[][] table = new String[5][5];
-	private Scanner input; 
 	
 	public void setup()
 	{
@@ -42,7 +41,7 @@ public class OX {
 	public void playerTurn() 
 	{
 		int  x,y = 0;
-		input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		while(true) {
 			System.out.print("Insert O position : ");
 			x = input.nextInt();
