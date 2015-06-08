@@ -62,6 +62,6 @@ public class OX {
 		else if(y == 3) {
 			y += 1;
 		}
-		table[y][x] = "o";
+		table[x][y] = "o";
 	}
 }
