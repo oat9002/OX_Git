@@ -2,10 +2,16 @@ import java.util.Scanner;;
 
 public class OX {
 	
-	String[][] table = new String[5][5];
+	char[][] table = new char[3][3];
 	
 	public void setup()
 	{
+		for(int row = 0;row < table.length;row++) { // init table
+			for(int col = 0;col < table[row].length;col++) {
+				table[row][col] = ' ';
+			}
+		}
+		
 		drawTable();
 	}
 	
@@ -13,17 +19,7 @@ public class OX {
 	{
 		for(int row = 0;row < table.length;row++) {
 			for(int col = 0;col < table[row].length;col++) {
-				if(row % 2 == 0) {
-					if(col % 2 != 0) {
-						table[row][col] = "|";
-					}
-					else {
-						table[row][col] = " ";
-					}
-				}
-				else {
-					table[row][col] = "-";
-				}
+				System.out.print(table[row][col]);
 			}
 		}
 	}
@@ -62,6 +58,10 @@ public class OX {
 		else if(y == 3) {
 			y += 1;
 		}
-		table[x][y] = "o";
+		
+		if (table[x][y].isEmpty())
+		{
+			table[x][y] = "O";
+		}
 	}
 }
