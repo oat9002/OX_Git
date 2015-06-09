@@ -6,13 +6,17 @@ public class OX {
 	
 	public void setup()
 	{
-		for(int row = 0;row < table.length;row++) { // init table
+		initTable();
+		drawTable();
+	}
+	
+	public void initTable()
+	{
+		for(int row = 0;row < table.length;row++) {
 			for(int col = 0;col < table[row].length;col++) {
 				table[row][col] = ' ';
 			}
 		}
-		
-		drawTable();
 	}
 	
 	public void drawTable()
@@ -21,16 +25,8 @@ public class OX {
 			for(int col = 0;col < table[row].length;col++) {
 				System.out.print(table[row][col]);
 			}
-		}
-	}
-	
-	public void printTable()
-	{
-		for(int row = 0;row < table.length;row++) {
-			for(int col = 0;col < table[row].length;col++) {
-				System.out.print(table[row][col]);
-			}
 			System.out.println();
+			System.out.println("-----");
 		}
 	}
 	
@@ -59,9 +55,9 @@ public class OX {
 			y += 1;
 		}
 		
-		if (table[x][y].isEmpty())
+		if (table[x][y]==' ')
 		{
-			table[x][y] = "O";
+			table[x][y] = 'O';
 		}
 	}
 }
