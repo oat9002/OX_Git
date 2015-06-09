@@ -8,6 +8,10 @@ public class Run {
 		while(true) {
 			start.playerTurn();
 			start.printTable();
+			if(start.checkWin("o")) {
+				System.out.println("Win!!!");
+				break;
+			}
 		}
 	}
 }
