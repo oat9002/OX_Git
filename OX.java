@@ -1,4 +1,3 @@
-import java.util.Scanner;;
 
 public class OX {
 	
@@ -13,6 +12,11 @@ public class OX {
 				table[row][col] = " ";
 			}
 		}
+	}
+	
+	public void setValue(int row,int col,String str)
+	{
+		table[row][col] = str;
 	}
 	
 	public void printTable()
@@ -40,22 +44,6 @@ public class OX {
 			}
 			System.out.println();
 		}
-	}
-	
-	public void playerTurn() 
-	{
-		Scanner input = new Scanner(System.in);
-		while(true) {
-			System.out.print("Insert O position : ");
-			row = input.nextInt();
-			col = input.nextInt();
-			if(row <= 3 && col <= 3 && row > 0 && col > 0) {
-				break;
-			}
-		}
-		row -= 1;
-		col -= 1;
-		table[row][col] = "o";
 	}
 	
 	public boolean checkWin(String str) 
@@ -180,5 +168,10 @@ public class OX {
 			col = col_t;
 		}
 		return false;
+	}
+	
+	public String[][] getTable()
+	{
+		return table;
 	}
 }
