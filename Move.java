@@ -7,7 +7,7 @@ public class Move {
 	
 	public Move(String[][] table)
 	{
-		this.table = table;
+		this.table = new String(table);
 		heuristicVal = getHeuristic(this.table);
 		firstchild = null;
 		nextSibling = null;
