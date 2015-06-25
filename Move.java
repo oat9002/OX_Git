@@ -13,29 +13,29 @@ public class Move {
 		nextSibling = null;
 	}
 	
-	public void createMove(String[][] table,int row,int col,String str)
+	public void createMove(Move node,int row,int col,String str)
 	{
 		while(row < 3) {
 			while(col < 3) {
-				if(table[row][col].equals(" ")) {
-					Move move = new Move(this.table);
+				if(node.table[row][col].equals(" ")) {
+					Move move = new Move(node.table);
 					move.setMove(move.table,row,col,str);
-					if(firstchild == null) {
-						firstchild = move;
+					if(isEmpty(node.firstchild)) {
+						node.firstchild = move;
 						if(str.equals("X")) {
-							createMove(move.table,row,col,"O");
+							createMove(move,row,col,"O");
 						}
 						else if(str.equals("O")) {
-							createMove(move.table,row,col,"X");
+							createMove(move,row,col,"X");
 						}
 					}
 					else {
-						nextSibling = move;
+						node.nextSibling = move;
 						if(str.equals("X")) {
-							createMove(move.table,row,col,"O");
+							createMove(move,row,col,"O");
 						}
 						else if(str.equals("O")) {
-							createMove(move.table,row,col,"X");
+							createMove(move,row,col,"X");
 						}
 					}
 				}
@@ -43,6 +43,16 @@ public class Move {
 			}
 			col = 0;
 			row++;
+		}
+	}
+	
+	public boolean isEmpty(Move move)
+	{
+		if(move == null) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 	
