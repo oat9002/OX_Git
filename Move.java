@@ -1,21 +1,27 @@
  
 public class Move {
-	String[][] table = new String[3][3];
+	String[][] table;
 	int heuristicVal;
 	Move firstchild;
 	Move nextSibling;
 	
 	public Move(String[][] table)
 	{
-		this.table = table;
+		this.table = new String[3][3];
+		for(int row = 0;row < this.table.length;row++) {
+			for(int col = 0;col < this.table[row].length;col++) {
+				this.table[row][col] = table[row][col];
+			}
+		}
 		heuristicVal = getHeuristic(this.table);
 		firstchild = null;
 		nextSibling = null;
 	}
-	
+	 
 	public void createMove(Move node,int row,int col,String str)
 	{
-		while(row < 3) {
+		int count = 0;
+		while(true) {
 			while(col < 3) {
 				if(node.table[row][col].equals(" ")) {
 					Move move = new Move(node.table);
@@ -29,8 +35,10 @@ public class Move {
 							createMove(move,row,col,"X");
 						}
 					}
-					else {
-						node.nextSibling = move;
+					else if(isEmpty(node.nextSibling)){
+						if(!isEqual(node.firstchild.table,move.table)) {
+							node.nextSibling = move;
+						}
 						if(str.equals("X")) {
 							createMove(move,row,col,"O");
 						}
@@ -43,6 +51,39 @@ public class Move {
 			}
 			col = 0;
 			row++;
+			if(row == 3) {
+				row = 0;
+			}
+			count++;
+			/*for(int chk_row = 0;chk_row < table.length;chk_row++) {
+				for(int chk_col = 0;chk_col < table[chk_row].length;chk_col++) {
+					if(table[chk_row][chk_col] != " ") {
+						count++;
+					}
+				}
+			}*/
+			if(count == 9) {
+				count = 0;
+				break;
+			}
+		}
+	}
+	
+	public boolean isEqual(String[][] cmp1,String[][] cmp2)
+	{
+		int count = 0;
+		for(int row = 0;row < 3;row++) {
+			for(int col = 0;col < 3;col++) {
+				if(cmp1[row][col].equals(cmp2[row][col])) {
+					count ++;
+				}
+			}
+		}
+		if(count == 9) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 	
